@@ -29,7 +29,7 @@ jobs:
         uses: docker/setup-buildx-action@v1
       
       - name: Log in to GitHub Container Registry
-        run: echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Print message before building Docker image
         run: echo "Building Docker image..."
@@ -45,4 +45,26 @@ jobs:
 
       - name: Print completion message
         run: echo "Docker image build and push completed successfully."
-        
+  
+  Deploying_to_Kubernetes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'latest'
+  
+      - name: Create Kubernetes secret for GitHub Container Registry
+        run: |
+          kubectl create secret docker-registry ghcr-secret \
+            --docker-server=ghcr.io \
+            --docker-username=${{ secrets.GHCR_USERNAME }} \
+            --docker-password=${{ secrets.GITHUB_TOKEN }} \
+            --docker-email=${{ secrets.GHCR_EMAIL }} \
+          || kubectl get secret ghcr-secret
+  
+      - name: Apply Kubernetes deployment
+        run: kubectl apply -f infrastructure/K8S/main-app-deployment.yml
+  
+      - name: Force rollout of the deployment to use the latest image
+        run: kubectl rollout restart deployment/mainapp-deployment

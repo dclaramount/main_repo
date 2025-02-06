@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mainapp-deployment
+  labels:
+    app: mainapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mainapp
+  template:
+    metadata:
+      labels:
+        app: mainapp
+    spec:
+      containers:
+      - name: mainapp
+        image: ghcr.io/dclaramount/main_repo/mainapp:latest
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: ghcr-secret
