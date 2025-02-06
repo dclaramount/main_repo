@@ -58,6 +58,7 @@ jobs:
 
       - name: Configure kubeconfig
         run: |
+          mkdir -p $HOME/.kube
           echo "${{ secrets.KUBECONFIG_CONTENT }}" > $HOME/.kube/config
   
       - name: Create Kubernetes secret for GitHub Container Registry
