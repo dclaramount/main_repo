@@ -19,7 +19,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  Real_Deal:
+  Builds_Docker_Image:
+    needs: Explore-GitHub-Actions
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -47,12 +48,17 @@ jobs:
         run: echo "Docker image build and push completed successfully."
   
   Deploying_to_Kubernetes:
+    needs: Builds_Docker_Image
     runs-on: ubuntu-latest
     steps:
       - name: Set up kubectl
         uses: azure/setup-kubectl@v1
         with:
           version: 'latest'
+
+      - name: Configure kubeconfig
+        run: |
+          echo "${{ secrets.KUBECONFIG_CONTENT }}" > $HOME/.kube/config
   
       - name: Create Kubernetes secret for GitHub Container Registry
         run: |
