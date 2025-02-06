@@ -21,7 +21,10 @@ app.get('/env', (req, res) => {
        BUILD_DATE: process.env.BUILD_DATE
      });
    });
-
+// Health probe endpoint
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
  app.listen(port, ()=>{
      console.log(
 `Connected successfully on port ${port}`)
