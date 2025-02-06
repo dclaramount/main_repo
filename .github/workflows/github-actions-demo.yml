@@ -36,7 +36,13 @@ jobs:
         run: echo "Building Docker image..."
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository }}/mainapp:latest -f docker/Build.DockerFile .
+        run: |
+          docker build \
+            --build-arg BUILD_NUMBER=${{ github.run_number }} \
+            --build-arg GIT_COMMIT=${{ github.sha }} \
+            --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+            -t ghcr.io/${{ github.repository }}/mainapp:latest \
+            -f docker/Build.DockerFile .
 
       - name: Print message before pushing Docker image
         run: echo "Pushing Docker image to GitHub Container Registry..."
