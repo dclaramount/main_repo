@@ -1,0 +1,33 @@
+{
+  "name": "mainapp",
+  "version": "1.0.0",
+  "description": "This is the main app (back end and front end) for our app",
+  "keywords": [
+    "MainApp"
+  ],
+  "homepage": "https://github.com/dclaramount/main_repo#readme",
+  "bugs": {
+    "url": "https://github.com/dclaramount/main_repo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dclaramount/main_repo.git"
+  },
+  "license": "ISC",
+  "author": "Diego Claramount",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "start": "node ./dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.12.0",
+    "typescript": "^5.7.3"
+  }
+}
