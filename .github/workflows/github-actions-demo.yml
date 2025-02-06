@@ -51,6 +51,9 @@ jobs:
     needs: Builds_Docker_Image
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
       - name: Set up kubectl
         uses: azure/setup-kubectl@v1
         with:
