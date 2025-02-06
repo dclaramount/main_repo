@@ -8,6 +8,11 @@ app.get('/', (req, res)=>
      res.send(`Servicing App Build on ${process.env.BUILD_DATE}.`);
 });
 
+app.get('/test', (req, res)=>
+  {
+       res.send(`This is a new endpoint.`);
+  });
+
 // Endpoint to serve environment variables
 app.get('/env', (req, res) => {
      res.json({
