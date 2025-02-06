@@ -58,6 +58,7 @@ jobs:
 
       - name: Configure kubeconfig
         run: |
+          ls -l
           mkdir -p $HOME/.kube
           echo "${{ secrets.KUBECONFIG_CONTENT }}" > $HOME/.kube/config
   
@@ -71,7 +72,7 @@ jobs:
           || kubectl get secret ghcr-secret
   
       - name: Apply Kubernetes deployment
-        run: kubectl apply -f infrastructure/K8S/main-app-deployment.yml
+        run: kubectl apply -f main-app-deployment.yml
   
       - name: Force rollout of the deployment to use the latest image
         run: kubectl rollout restart deployment/mainapp-deployment
