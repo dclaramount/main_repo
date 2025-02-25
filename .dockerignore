@@ -1,0 +1,9 @@
+node_modules
+dist
+client/node_modules
+client/build
+server/node_modules
+.dockerignore
+.git
+.gitignore
+.env*

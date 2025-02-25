@@ -1,0 +1,23 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+      "target": "es5", // Transpiles to ES5 for browser compatibility
+      "lib": ["dom", "dom.iterable", "esnext"], // Includes DOM and modern JS libraries
+      "allowJs": true, // Allows JavaScript files in the project
+      "skipLibCheck": true, // Skips type checking of declaration files for faster builds
+      "esModuleInterop": true, // Ensures compatibility with CommonJS modules
+      "allowSyntheticDefaultImports": true, // Allows default imports from modules without default exports
+      "strict": true, // Enables strict type checking
+      "forceConsistentCasingInFileNames": true, // Enforces consistent file name casing
+      "module": "esnext", // Uses ESNext module system for tree-shaking support
+      "moduleResolution": "node", // Resolves modules like Node.js does
+      "outDir": "../dist/client", // Output directory for compiled JavaScript files
+      "resolveJsonModule": true, // Allows importing JSON files as modules
+      "isolatedModules": true, // Ensures each file can be transpiled independently
+      "noEmit": true, // Prevents emitting compiled JavaScript files (useful for React)
+      "jsx": "react-jsx" // Enables React's JSX transform (React 17+)
+    },
+    "include": ["src"], // Includes all TypeScript and TSX files in the src/ folder
+    "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx"] // Excludes test files and node_modules
+  }
+  

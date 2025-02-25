@@ -4,11 +4,9 @@ services:
   app:
     build:
       context: ..
-      dockerfile: docker/Build.DockerFile
+      dockerfile: ./docker/Build.DockerFile
     ports:
       - "3000:3000"
+    restart: always
     environment:
-      NODE_ENV: development
-    volumes:
-      - ..:/usr/src/app
-      - /usr/src/app/node_modules
+      NODE_ENV: production

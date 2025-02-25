@@ -1,0 +1,22 @@
+{
+    "extends": "../tsconfig.json", // Extends the base configuration from the root
+    "compilerOptions": {
+      "target": "es2016", // Specifies ECMAScript version for compatibility
+      "module": "commonjs", // Uses CommonJS module system (standard in Node.js)
+      "strict": true, // Enables strict type checking
+      "esModuleInterop": true, // Ensures compatibility with CommonJS modules
+      "skipLibCheck": true, // Skips type checking of declaration files for faster builds
+      "forceConsistentCasingInFileNames": true, // Enforces consistent casing in imports
+      "outDir": "../dist/server", // Output directory for compiled JavaScript files
+      "rootDir": "./src", // Specifies the root directory of TypeScript source files
+      "moduleResolution": "node", // Resolves modules like Node.js does
+      "resolveJsonModule": true, // Allows importing JSON files as modules
+      "baseUrl": ".", // Base directory for resolving non-relative imports
+      "paths": {
+        "@shared/*": ["../shared/*"] // Path alias for shared code between client and server
+      }
+    },
+    "include": ["src/**/*"], // Includes all TypeScript files in the src folder
+    "exclude": ["node_modules", "**/*.test.ts"] // Excludes node_modules and test files
+  }
+  
