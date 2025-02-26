@@ -1,0 +1,20 @@
+.homepage {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .features {
+    margin-top: 20px;
+  }
+  
+  .features ul {
+    list-style-type: disc;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 600px;
+  }
+  
+  .features li {
+    margin-bottom: 10px;
+  }
+  
