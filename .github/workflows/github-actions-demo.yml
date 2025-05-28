@@ -5,6 +5,11 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
 jobs:
+  Check_Python_Version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Python version
+        run: python3 --version
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
