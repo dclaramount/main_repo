@@ -8,8 +8,9 @@ jobs:
   Check_Python_Version:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Python version
-        run: python3 --version
+      - run: python3 --version
+      - run: python3 -m venv venv
+      - run: pip3 install json2html
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
